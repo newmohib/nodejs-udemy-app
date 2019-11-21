@@ -1,6 +1,7 @@
 const os = require('os');
 const fs = require('fs');
 const EventEmitter = require('events');
+const emitter=new EventEmitter();
 
 // var totalMemory=os.totalmem();
 // var freeMemory=os.freemem();
@@ -18,12 +19,18 @@ const EventEmitter = require('events');
 
 //EventEmitter
 
-const emitter=new EventEmitter();
+
 //Register a listerner
-emitter.on('messageLoged',()=>{
-    console.log('Listener Called');
+emitter.on('messageLoged',(arg)=>{
+    console.log('Listener Called', arg);
 
 })
-emitter.emit('messageLoged')
+
+
+const log=require('./logger');
+log('message')
+
+
+//Raise : logging (data:message)
 
 
